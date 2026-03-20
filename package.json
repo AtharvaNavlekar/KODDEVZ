@@ -7,6 +7,9 @@
     "node": ">=18.0.0"
   },
   "type": "module",
+  "workspaces": [
+    "server"
+  ],
   "scripts": {
     "dev": "concurrently \"vite --port 3000\" \"tsx watch server/src/index.ts\"",
     "dev:client": "vite --port 3000",
@@ -45,7 +48,7 @@
     "react-dom": "^19.0.0",
     "react-router-dom": "^7.13.1",
     "tailwind-merge": "^3.5.0",
-    "zod": "^4.3.6"
+    "zod": "^3.24.2"
   },
   "devDependencies": {
     "@types/cors": "^2.8.17",
@@ -71,6 +74,8 @@
     "typescript": "~5.8.2",
     "typescript-eslint": "^8.57.1",
     "vite": "^6.2.0",
-    "vitest": "^2.0.0"
+    "vitest": "^2.0.0",
+    "pino": "^9.0.0",
+    "@prisma/client": "^6.0.0"
   }
 }

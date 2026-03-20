@@ -26,7 +26,7 @@ export const contactSchema = z.object({
 export function validateChatBody(req: Request, res: Response, next: NextFunction) {
   const result = chatSchema.safeParse(req.body);
   if (!result.success) {
-    res.status(400).json({ error: result.error.errors[0]?.message ?? 'Invalid input' });
+    res.status(400).json({ error: result.error.issues[0]?.message ?? 'Invalid input' });
     return;
   }
   req.body = result.data;
@@ -36,7 +36,7 @@ export function validateChatBody(req: Request, res: Response, next: NextFunction
 export function validateContactBody(req: Request, res: Response, next: NextFunction) {
   const result = contactSchema.safeParse(req.body);
   if (!result.success) {
-    res.status(400).json({ error: result.error.errors[0]?.message ?? 'Invalid input' });
+    res.status(400).json({ error: result.error.issues[0]?.message ?? 'Invalid input' });
     return;
   }
   req.body = result.data;
