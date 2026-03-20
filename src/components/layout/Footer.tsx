@@ -3,19 +3,18 @@ import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 
 export function Footer() {
-  const [isDark, setIsDark] = useState(true);
+  const [isDark, setIsDark] = useState(() => {
+    if (typeof document === 'undefined') return true;
+    return document.documentElement.classList.contains('dark');
+  });
 
   useEffect(() => {
-    // Check initial theme
-    if (document.documentElement.classList.contains('dark')) {
-      setIsDark(true);
-    } else if (document.documentElement.classList.contains('light')) {
-      setIsDark(false);
-    } else {
-      // Default to dark for this app
-      document.documentElement.classList.add('dark');
-      setIsDark(true);
-    }
+    // Ensure sync if document changes externally (rare but good practice)
+    const observer = new MutationObserver(() => {
+      setIsDark(document.documentElement.classList.contains('dark'));
+    });
+    observer.observe(document.documentElement, { attributes: true, attributeFilter: ['class'] });
+    return () => observer.disconnect();
   }, []);
 
   const toggleTheme = () => {
