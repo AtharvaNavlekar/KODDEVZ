@@ -69,12 +69,6 @@ export function Navbar() {
 
         <div className="hidden md:flex items-center gap-6">
           <Link
-            to="/portal"
-            className="text-sm font-medium text-text-secondary hover:text-text-primary transition-colors"
-          >
-            Client Login
-          </Link>
-          <Link
             to="/#contact"
             className="px-4 py-2 text-sm font-medium rounded-full bg-text-primary text-bg hover:opacity-80 transition-opacity"
           >
