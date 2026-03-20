@@ -47,7 +47,7 @@ export function Footer() {
               Turn that idea you had in mind into a website. Build, deploy, and scale with your AI co-founder.
             </p>
           </div>
-          
+
           <div className="flex flex-col gap-4">
             <h4 className="text-text-primary font-medium text-sm mb-1">Links</h4>
             <Link to="/" className="text-text-secondary hover:text-text-primary text-sm transition-colors">Home</Link>
@@ -60,12 +60,10 @@ export function Footer() {
           <div className="flex flex-col gap-4">
             <h4 className="text-text-primary font-medium text-sm mb-1">More Resources</h4>
             <Link to="/blogs" className="text-text-secondary hover:text-text-primary text-sm transition-colors">Blogs</Link>
-            <Link to="/terms" className="text-text-secondary hover:text-text-primary text-sm transition-colors">Terms & Conditions</Link>
-            <Link to="/privacy" className="text-text-secondary hover:text-text-primary text-sm transition-colors">Privacy Policy</Link>
             <Link to="/refund" className="text-text-secondary hover:text-text-primary text-sm transition-colors">Refund Policy</Link>
           </div>
         </div>
-        
+
         <div className="flex flex-col md:flex-row items-center justify-between pt-8 border-t border-black/10 dark:border-white/10 gap-4">
           <p className="text-text-secondary text-sm">
             &copy; {new Date().getFullYear()} KODDEVZ. All rights reserved.

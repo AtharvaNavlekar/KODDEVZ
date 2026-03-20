@@ -19,8 +19,8 @@ export function Navbar() {
 
   const navLinks = [
     { name: "Features", href: "/#features" },
-    { name: "Pricing", href: "/#pricing" },
-    { name: "FAQ", href: "/#faq" },
+    { name: "Contact", href: "/contact" },
+    { name: "About Us", href: "/about" },
   ];
 
   const handleNavClick = (href: string) => {
@@ -112,13 +112,6 @@ export function Navbar() {
                 </Link>
               ))}
               <div className="h-px w-full bg-border my-2" />
-              <Link
-                to="/portal"
-                onClick={() => setMobileMenuOpen(false)}
-                className="text-base font-medium text-text-secondary hover:text-text-primary py-2"
-              >
-                Client Login
-              </Link>
               <Link
                 to="/#contact"
                 onClick={() => setMobileMenuOpen(false)}

@@ -5,7 +5,6 @@
 
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { Home } from "./pages/Home";
-import { ClientPortal } from "./pages/ClientPortal";
 import { Prebuilt } from "./pages/Prebuilt";
 import { Customized } from "./pages/Customized";
 import { AboutUs } from "./pages/AboutUs";
@@ -20,7 +19,6 @@ export default function App() {
     <Router>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/portal" element={<ClientPortal />} />
         <Route path="/prebuilt" element={<Prebuilt />} />
         <Route path="/customized" element={<Customized />} />
         <Route path="/about" element={<AboutUs />} />
