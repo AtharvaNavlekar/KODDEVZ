@@ -25,7 +25,29 @@ app.use(helmet());
 app.use(cors());
 app.use(express.json());
 
+import rateLimit from 'express-rate-limit';
+import { GoogleGenAI } from '@google/genai';
+
+const apiLimiter = rateLimit({
+  windowMs: 1 * 60 * 1000, // 1 minute
+  max: 20, // Limit each IP to 20 requests per windowMs
+  standardHeaders: true,
+  legacyHeaders: false,
+  message: { error: 'Too many requests, please try again later.' }
+});
+
+// Apply rate limiting to all /api routes
+app.use('/api/', apiLimiter);
+
+// Initialize secure AI Client (reads GEMINI_API_KEY from server env)
+// Note: If the key isn't present, the route will handle the error gracefully.
+const aiClient = process.env.GEMINI_API_KEY ? new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY }) : null;
+
 // --- Zod Schemas ---
+const ChatSchema = z.object({
+  prompt: z.string().min(1).max(2000, "Prompt exceeds maximum length of 2000 characters.")
+});
+
 const ContactSchema = z.object({
   name: z.string().min(2),
   email: z.string().email(),
@@ -104,6 +126,34 @@ app.get('/api/projects', async (req, res) => {
   } catch (error) {
     logger.error(error, 'Error fetching projects');
     res.status(500).json({ error: 'Internal server error' });
+  }
+});
+
+// POST Secure Chat Proxy
+app.post('/api/chat', async (req, res) => {
+  try {
+    if (!aiClient) {
+      return res.status(503).json({ error: 'LLM Service Unavailable. GEMINI_API_KEY is not configured on the server.' });
+    }
+
+    const { prompt } = ChatSchema.parse(req.body);
+
+    const response = await aiClient.models.generateContent({
+      model: 'gemini-2.5-flash',
+      contents: prompt,
+      config: {
+        systemInstruction: "You are the KODDEVZ AI assistant. Keep responses professional, helpful, and concise.",
+        temperature: 0.7
+      }
+    });
+
+    res.json({ text: response.text });
+  } catch (error) {
+    if (error instanceof z.ZodError) {
+      return res.status(400).json({ error: 'Validation failed', details: error.errors });
+    }
+    logger.error(error, 'Error during Gemini API proxy call');
+    res.status(500).json({ error: 'Something went wrong generating the response.' });
   }
 });
 
