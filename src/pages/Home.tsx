@@ -1,9 +1,10 @@
-import { Navbar } from "@/components/layout/Navbar";
-import { Hero } from "@/components/sections/Hero";
-import { BentoFeatures } from "@/components/sections/BentoFeatures";
-import { Portfolio } from "@/components/sections/Portfolio";
-import { Contact } from "@/components/sections/Contact";
-import { Footer } from "@/components/layout/Footer";
+import { Navbar } from '@/components/layout/Navbar';
+import { Hero } from '@/components/sections/Hero';
+import { SocialProof } from '@/components/sections/SocialProof';
+import { FeaturesShowcase } from '@/components/sections/FeaturesShowcase';
+import { UserJourney } from '@/components/sections/UserJourney';
+import { Contact } from '@/components/sections/Contact';
+import { Footer } from '@/components/layout/Footer';
 
 export function Home() {
   return (
@@ -11,8 +12,9 @@ export function Home() {
       <Navbar />
       <main>
         <Hero />
-        <BentoFeatures />
-        <Portfolio />
+        <SocialProof />
+        <FeaturesShowcase />
+        <UserJourney />
         <Contact />
       </main>
       <Footer />
