@@ -4,10 +4,10 @@ import { ChevronRight, Sparkles, Diamond, Wand2, ArrowRight } from 'lucide-react
 export function Hero() {
   return (
     <section className="relative min-h-[100dvh] flex flex-col items-center justify-center pt-24 pb-12 overflow-hidden bg-bg">
-      {/* Background Gradients - tailored for a luxurious, high-end feel */}
-      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[90vw] max-w-[1200px] h-[600px] opacity-40 pointer-events-none flex justify-center items-center mix-blend-screen">
-        <div className="absolute w-[600px] h-[600px] bg-amber-500/10 blur-[130px] rounded-full mix-blend-screen translate-x-[-20%]" />
-        <div className="absolute w-[500px] h-[500px] bg-emerald-500/10 blur-[100px] rounded-full mix-blend-screen translate-x-[20%] translate-y-[10%]" />
+      {/* Background Gradients - elegant light mode friendly */}
+      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[90vw] max-w-[1200px] h-[600px] opacity-60 pointer-events-none flex justify-center items-center mix-blend-screen dark:mix-blend-screen dark:opacity-40">
+        <div className="absolute w-[600px] h-[600px] bg-amber-400/20 dark:bg-amber-500/10 blur-[130px] rounded-full translate-x-[-20%]" />
+        <div className="absolute w-[500px] h-[500px] bg-emerald-400/20 dark:bg-emerald-500/10 blur-[100px] rounded-full translate-x-[20%] translate-y-[10%]" />
       </div>
 
       <div className="max-w-6xl mx-auto px-6 relative z-10 flex flex-col items-center text-center mt-4">
@@ -19,7 +19,7 @@ export function Hero() {
           className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10 text-xs sm:text-sm font-medium text-text-primary mb-8 backdrop-blur-xl shadow-sm hover:border-black/20 dark:hover:border-white/20 transition-all cursor-pointer group"
         >
           <Sparkles className="w-4 h-4 text-amber-500 animate-pulse" />
-          <span className="bg-clip-text text-transparent bg-gradient-to-r from-text-primary via-text-primary to-text-secondary group-hover:to-text-primary transition-all duration-300">
+          <span className="bg-clip-text text-transparent bg-gradient-to-r from-text-primary via-text-primary to-text-secondary group-hover:to-text-primary transition-all duration-300 tracking-wide font-serif">
             The Future of Fine Jewelry
           </span>
         </motion.div>
@@ -29,10 +29,10 @@ export function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-          className="text-5xl md:text-7xl lg:text-[6.5rem] font-bold tracking-tighter mb-6 leading-[1.05] text-balance max-w-5xl"
+          className="text-5xl md:text-7xl lg:text-[6.5rem] font-bold tracking-tighter mb-6 leading-[1.05] text-balance max-w-5xl text-text-primary"
         >
           Design your dream ring{' '}
-          <span className="text-transparent bg-clip-text bg-gradient-to-br from-amber-200 via-amber-400 to-amber-600 drop-shadow-[0_0_30px_rgba(251,191,36,0.1)]">
+          <span className="text-transparent bg-clip-text bg-gradient-to-br from-amber-500 to-amber-700 dark:from-amber-200 dark:via-amber-400 dark:to-amber-600 drop-shadow-[0_0_30px_rgba(251,191,36,0.1)]">
             with AI.
           </span>
         </motion.h1>
@@ -45,8 +45,8 @@ export function Hero() {
           className="text-lg md:text-xl text-text-secondary max-w-2xl mb-12 leading-relaxed text-balance"
         >
           Describe your perfect piece in plain English, and watch our cutting-edge AI generate
-          production-ready 3D models in real-time. From concept to casting,{' '}
-          <span className="text-text-primary font-medium">your bespoke journey starts here.</span>
+          production-ready 3D models in real-time.{' '}
+          <span className="text-text-primary font-medium">Your bespoke journey starts here.</span>
         </motion.p>
 
         {/* CTAs */}
@@ -57,21 +57,21 @@ export function Hero() {
           className="flex flex-col sm:flex-row items-center gap-4 w-full sm:w-auto"
         >
           <motion.button
-            whileHover={{ scale: 1.02 }}
+            whileHover={{ scale: 1.02, y: -2 }}
             whileTap={{ scale: 0.98 }}
-            className="w-full sm:w-auto group flex items-center justify-center gap-2 px-8 py-4 bg-text-primary text-bg font-semibold rounded-full transition-all border border-transparent hover:shadow-[0_0_40px_rgba(251,191,36,0.15)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 overflow-hidden relative"
+            className="w-full sm:w-auto group flex items-center justify-center gap-2 px-10 py-4 bg-black dark:bg-white text-white dark:text-black font-semibold rounded-full transition-all border border-transparent shadow-[0_10px_40px_-10px_rgba(0,0,0,0.5)] dark:shadow-[0_0_40px_rgba(255,255,255,0.15)] hover:shadow-xl focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 overflow-hidden relative"
           >
             <div className="absolute inset-0 bg-gradient-to-r from-amber-400/20 to-amber-600/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
-            <span className="relative z-10 text-[15px]">Start Customizing</span>
-            <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform relative z-10" />
+            <span className="relative z-10 text-[16px] tracking-wide">Try Now</span>
+            <ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform relative z-10" />
           </motion.button>
 
           <motion.button
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
-            className="w-full sm:w-auto flex items-center justify-center gap-2 px-8 py-4 bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10 text-text-primary font-semibold rounded-full hover:bg-black/10 dark:hover:bg-white/10 transition-all focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 backdrop-blur-md text-[15px]"
+            className="w-full sm:w-auto flex items-center justify-center gap-2 px-8 py-4 bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10 text-text-primary font-semibold rounded-full hover:bg-black/10 dark:hover:bg-white/10 transition-all focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 backdrop-blur-md text-[15px] shadow-sm"
           >
-            <Diamond className="w-4 h-4 text-text-secondary" />
+            <Diamond className="w-4 h-4 text-amber-600 dark:text-amber-400" />
             Explore Marketplace
           </motion.button>
         </motion.div>

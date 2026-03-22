@@ -1,4 +1,5 @@
-import { motion } from 'motion/react';
+import { motion, useScroll, useSpring } from 'motion/react';
+import { useRef } from 'react';
 import { MessageSquare, Wand2, Truck } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
@@ -27,6 +28,17 @@ const steps = [
 ];
 
 export function UserJourney() {
+  const ref = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ['start center', 'end center'],
+  });
+  const scaleY = useSpring(scrollYProgress, {
+    stiffness: 100,
+    damping: 30,
+    restDelta: 0.001,
+  });
+
   return (
     <section id="journey" className="py-32 bg-card relative overflow-hidden">
       {/* Decorative backdrop */}
@@ -47,9 +59,14 @@ export function UserJourney() {
           </p>
         </div>
 
-        <div className="relative">
+        <div className="relative" ref={ref}>
           {/* Connecting Line */}
-          <div className="absolute top-12 left-[48px] md:left-1/2 md:-translate-x-1/2 w-0.5 h-[calc(100%-100px)] bg-black/5 dark:bg-white/5 rounded-full" />
+          <div className="absolute top-12 left-[48px] md:left-1/2 md:-translate-x-1/2 w-0.5 h-[calc(100%-100px)] bg-black/5 dark:bg-white/5 rounded-full overflow-hidden">
+            <motion.div
+              style={{ scaleY, originY: 0 }}
+              className="absolute top-0 w-full h-full bg-gradient-to-b from-amber-400 to-amber-600 rounded-full"
+            />
+          </div>
 
           <div className="space-y-12 md:space-y-24">
             {steps.map((step, index) => (
