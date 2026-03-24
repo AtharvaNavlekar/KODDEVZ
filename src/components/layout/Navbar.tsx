@@ -1,8 +1,8 @@
-import { useState, useEffect } from "react";
-import { Link, useLocation } from "react-router-dom";
-import { motion, AnimatePresence } from "motion/react";
-import { Menu, X, Hexagon } from "lucide-react";
-import { cn } from "@/lib/utils";
+import { useState, useEffect } from 'react';
+import { Link, useLocation } from 'react-router-dom';
+import { motion, AnimatePresence } from 'motion/react';
+import { Menu, X, Terminal } from 'lucide-react';
+import { cn } from '@/lib/utils';
 
 export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -13,23 +13,23 @@ export function Navbar() {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 10);
     };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   const navLinks = [
-    { name: "Features", href: "/#features" },
-    { name: "Contact", href: "/contact" },
-    { name: "About Us", href: "/about" },
+    { name: 'Platform', href: '/#platform' },
+    { name: 'Documentation', href: '/#docs' },
+    { name: 'Enterprise', href: '/contact' },
   ];
 
   const handleNavClick = (href: string) => {
     setMobileMenuOpen(false);
-    if (location.pathname === "/" && href.startsWith("/#")) {
+    if (location.pathname === '/' && href.startsWith('/#')) {
       const id = href.substring(2);
       const element = document.getElementById(id);
       if (element) {
-        element.scrollIntoView({ behavior: "smooth" });
+        element.scrollIntoView({ behavior: 'smooth' });
       }
     }
   };
@@ -37,19 +37,19 @@ export function Navbar() {
   return (
     <header
       className={cn(
-        "sticky top-0 z-50 transition-all duration-300 border-b",
-        isScrolled ? "bg-bg/70 backdrop-blur-xl border-border py-3 shadow-sm" : "bg-bg/40 backdrop-blur-md border-transparent py-5"
+        'sticky top-0 z-50 transition-all duration-300 border-b',
+        isScrolled
+          ? 'bg-bg/70 backdrop-blur-xl border-border py-3 shadow-sm'
+          : 'bg-bg/40 backdrop-blur-md border-transparent py-5'
       )}
     >
       <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
         <div className="flex items-center gap-8">
           <Link to="/" className="flex items-center gap-3 group">
             <div className="w-8 h-8 rounded-lg bg-text-primary flex items-center justify-center transition-transform group-hover:scale-105">
-              <Hexagon className="w-5 h-5 text-bg fill-bg" />
+              <Terminal className="w-5 h-5 text-bg" />
             </div>
-            <span className="font-semibold tracking-tight text-lg text-text-primary">
-              KODDEVZ
-            </span>
+            <span className="font-semibold tracking-tight text-lg text-text-primary">KODDEVZ</span>
           </Link>
 
           {/* Desktop Nav */}
@@ -90,7 +90,7 @@ export function Navbar() {
         {mobileMenuOpen && (
           <motion.div
             initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: "auto" }}
+            animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
             className="absolute top-full left-0 right-0 bg-card border-b border-border overflow-hidden md:hidden"
           >

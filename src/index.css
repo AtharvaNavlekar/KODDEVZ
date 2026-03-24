@@ -4,35 +4,38 @@
 @custom-variant dark (&:is(.dark, .dark *));
 
 :root {
-  --theme-bg: #ffffff;
-  --theme-card: #f4f4f5;
-  --theme-accent-blue: #3b82f6;
-  --theme-accent-purple: #8b5cf6;
-  --theme-text-primary: #09090b;
-  --theme-text-secondary: #71717a;
-  --theme-border: rgba(0, 0, 0, 0.1);
-  --theme-glow: rgba(0, 0, 0, 0.15);
+  --theme-bg: #f8fafc;
+  --theme-card: #ffffff;
+  --theme-accent-cyan: #06b6d4;
+  --theme-accent-blue: #2563eb;
+  --theme-accent-violet: #8b5cf6;
+  --theme-text-primary: #0f172a;
+  --theme-text-secondary: #475569;
+  --theme-border: rgba(15, 23, 42, 0.1);
+  --theme-glow: rgba(37, 99, 235, 0.15);
 }
 
 .dark {
-  --theme-bg: #000000;
-  --theme-card: #09090b;
-  --theme-accent-blue: #3b82f6;
-  --theme-accent-purple: #8b5cf6;
-  --theme-text-primary: #fafafa;
-  --theme-text-secondary: #a1a1aa;
-  --theme-border: rgba(255, 255, 255, 0.1);
-  --theme-glow: rgba(255, 255, 255, 0.2);
+  --theme-bg: #0b0f19;
+  --theme-card: #111827;
+  --theme-accent-cyan: #06b6d4;
+  --theme-accent-blue: #2563eb;
+  --theme-accent-violet: #8b5cf6;
+  --theme-text-primary: #f8fafc;
+  --theme-text-secondary: #94a3b8;
+  --theme-border: rgba(255, 255, 255, 0.08);
+  --theme-glow: rgba(6, 182, 212, 0.25);
 }
 
 @theme {
-  --font-sans: 'Inter', sans-serif;
-  --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, monospace;
+  --font-sans: 'Inter', system-ui, sans-serif;
+  --font-mono: 'Geist Mono', 'JetBrains Mono', monospace;
 
   --color-bg: var(--theme-bg);
   --color-card: var(--theme-card);
   --color-accent-blue: var(--theme-accent-blue);
-  --color-accent-purple: var(--theme-accent-purple);
+  --color-accent-cyan: var(--theme-accent-cyan);
+  --color-accent-violet: var(--theme-accent-violet);
   --color-text-primary: var(--theme-text-primary);
   --color-text-secondary: var(--theme-text-secondary);
   --color-border: var(--theme-border);
